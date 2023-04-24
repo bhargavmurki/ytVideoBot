@@ -1,3 +1,5 @@
+import logging
+
 from pytube import YouTube
 import requests
 import json
@@ -22,15 +24,10 @@ def upload_file(title):
     return True
 
 
-web_hook_url = 'https://hooks.slack.com/services/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'
-
-n = int(input("Enter the number of youtube videos to download:   "))
+n = int(input("Number of videos to download: "))
 
 links = []
 
-slack_msg = {'text': 'Enter all the links one per line:'}
-requests.post(web_hook_url, data=json.dumps(slack_msg))
-print("\nEnter all the links one per line:")
 
 for i in range(0, n):
     temp = input()
@@ -39,17 +36,14 @@ for i in range(0, n):
 for i in range(0, n):
     link = links[i]
     yt = YouTube(link)
-    print("\nDetails for Video", i + 1, "\n")
-    print("Title of video:   ", yt.title)
-    print("Number of views:  ", yt.views)
-    print("Length of video:  ", yt.length, "seconds")
+    print("\nDetails of the Video", i + 1, "\n")
+    print("Title: ", yt.title)
 
     stream = str(yt.streams.filter(progressive=True))
     stream = stream[1:]
     stream = stream[:-1]
     streamlist = stream.split(", ")
-    print("\nAll available options for downloads:\n")
-
+    print("\nAvailable streams: \n")
     for i in range(0, len(streamlist)):
         st = streamlist[i].split(" ")
         print(i + 1, ") ", st[1], " and ", st[3], sep='')
@@ -57,7 +51,7 @@ for i in range(0, n):
     l = yt.streams
     for i in l:
         print(i)
-    tag = int(input("\nEnter the itag of your preferred stream to download:   "))
+    tag = int(input("\nEnter the itag: "))
     ys = yt.streams.get_by_itag(tag)
     print("\nDownloading...")
     ys.download('./', filename=yt.title + '.mp4')
