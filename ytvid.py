@@ -20,11 +20,12 @@ def upload_file(title):
     print("Finished uploading file to S3")
     return True
 
-n = int(input("Enter the number of youtube videos to download:   "))
+
+n = int(input("Enter the number of videos to download: "))
 
 links = []
 
-print("\nEnter all the links one per line:")
+print("Enter the links one per line: ")
 
 for i in range(0, n):
     temp = input()
@@ -52,7 +53,7 @@ for i in range(0, n):
         print(i)
     tag = int(input("\nEnter the itag: "))
     ys = yt.streams.get_by_itag(tag)
-    print("\nDownloading...")
+    print("\nDownloading")
     ys.download('./', filename=yt.title + '.mp4')
     print("\nDownload done")
 
