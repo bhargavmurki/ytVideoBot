@@ -9,8 +9,8 @@ from slack_sdk.errors import SlackApiError
 
 # app = Flask(__name__)
 
-SLACK_TOKEN = "xoxb-2464400019841-5709104579636-44xZbATwWAAVN7q3xLK9Nnph"
-SLACK_CHANNEL = "#general"
+SLACK_TOKEN = "slack-token"
+SLACK_CHANNEL = "slack channel"
 
 
 def upload_file(title):
