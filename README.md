@@ -12,7 +12,7 @@ This Discord bot allows users to download YouTube videos and upload them to an S
    - `DISCORD_TOKEN`: Your Discord bot token.
    - `DISCORD_GUILD`: The name of your Discord server.
    - `S3_BUCKET`: The name of your S3 bucket.
-   - `FOLDER_NAME`: The name of the folder in your local machine where the videos are stored.
+   - `FOLDER_PATH`: The path to the folder in your local machine where the videos will be stored.
    - And set up the S3 Access Key and Secret Key using the `aws configure` command as it is not suggested to store them in .env file.
 
 4. **Create a new Discord application and add a bot to it. Follow these steps:**
