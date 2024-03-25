@@ -60,6 +60,8 @@ async def download(ctx):
             await ctx.send("Uploading to S3...")
             if upload_file(title):
                 await ctx.send(f"Uploaded to S3: {title}")
+                os.remove(f'{FOLDER_PATH}/{title}')
+                await ctx.send(f"Deleted local file: {title}")
             else:
                 await ctx.send(f"Failed to upload {title} to S3.")
         except Exception as e:
