@@ -10,7 +10,7 @@ from s3_operations import upload_file
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
-FOLDER_NAME = os.getenv('FOLDER_NAME')
+FOLDER_PATH = os.getenv('FOLDER_PATH')
 
 # Define intents
 intents = discord.Intents.default()
@@ -55,7 +55,7 @@ async def download(ctx):
             # ys = yt.streams.filter(adaptive=True, only_audio=False, res='720p', file_extension='mp4')[0]
             ys = yt.streams.get_highest_resolution()
             await ctx.send("Downloading...")
-            ys.download(f'../{FOLDER_NAME}/', filename=title)
+            ys.download(f'{FOLDER_PATH}', filename=title)
             await ctx.send("Download completed.")
             await ctx.send("Uploading to S3...")
             if upload_file(title):

@@ -6,10 +6,10 @@ load_dotenv()
 
 # Get the S3 bucket name from environment variable
 S3_BUCKET = os.getenv('S3_BUCKET')
-FOLDER_NAME = os.getenv('FOLDER_NAME')
+FOLDER_PATH = os.getenv('FOLDER_PATH')
 # Function to upload file to S3
 def upload_file(title):
-    filepath = f'../{FOLDER_NAME}/{title}'
+    filepath = f'{FOLDER_PATH}/{title}'
     if not os.path.exists(filepath):
         print(f"Error: File '{filepath}' does not exist.")
         return False
